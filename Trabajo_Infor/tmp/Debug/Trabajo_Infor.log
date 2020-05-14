@@ -1,2 +1,26 @@
-﻿  CoordinadorJuego.cpp
-  Trabajo_Infor.vcxproj -> C:\Users\INES\Desktop\Trabajo_Infor\Trabajo_Infor\bin\Trabajo_Infor.exe
+﻿  Bonus.cpp
+  Caja.cpp
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\caja.cpp(36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\caja.cpp(37): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\caja.cpp(38): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\caja.cpp(39): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+  ColorRGB.cpp
+  CoordinadorJuego.cpp
+  Disparo.cpp
+  DisparoEspecial.cpp
+  Esfera.cpp
+  EsferaPulsante.cpp
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\esferapulsante.cpp(27): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\esferapulsante.cpp(28): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+c:\users\ines\documents\github\industrial-computing-project\trabajo_infor\src\esferapulsante.cpp(29): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+  Hombre.cpp
+  Interaccion.cpp
+  ListaDisparos.cpp
+  ListaEsferas.cpp
+  Mundo.cpp
+  ObjetoMovil.cpp
+  Videojuego.cpp
+  Pared.cpp
+  Vector2D.cpp
+  Generando código...
+  Trabajo_Infor.vcxproj -> C:\Users\INES\Documents\GitHub\Industrial-Computing-Project\Trabajo_Infor\bin\Trabajo_Infor.exe
