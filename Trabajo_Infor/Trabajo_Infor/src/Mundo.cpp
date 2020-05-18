@@ -16,14 +16,17 @@ void Mundo::RotarOjo()
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
-			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
+			x_obs, y_obs, z_obs,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el codigo de dibujo
-	/*caja.dibuja();
-	hombre.dibuja();
+	caja.dibuja();
+	plataforma_1.dibuja();
+	plataforma_2.dibuja();
+	plataforma_3.dibuja();
+	plataforma_4.dibuja();
+	/*hombre.dibuja();
 	disparos.dibuja();
-	plataforma.dibuja();
 	bonus.dibuja();
 	esferas.dibuja();*/
 }
@@ -68,6 +71,8 @@ void Mundo::Inicializa()
 	x_ojo = 0;
 	y_ojo = 7.5;
 	z_ojo = 30;
+	y_obs = y_ojo;
+	x_obs = z_obs = 0.0f;
 	//bonus.setPos(5.0f, 5.0f);
 	cargarNivel();
 }
@@ -110,9 +115,13 @@ void Mundo::teclaEspecial(unsigned char key)
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
+		x_obs -= 0.05f;
+		x_ojo -= 0.05f;
 		//hombre.setVel(-5.0f, 0.0f);
 		break;
 	case GLUT_KEY_RIGHT:
+		x_obs += 0.05f;
+		x_ojo += 0.05f;
 		//hombre.setVel(5.0f, 0.0f);
 		break;
 	}
@@ -135,8 +144,15 @@ bool Mundo::cargarNivel()
 	//disparos.destruirContenido();
 	if (nivel == 1)
 	{
-		/*plataforma.setPos(-5.0f, 9.0f, 5.0f, 9.0f);
-		Esfera *e1 = new Esfera(1.5f, 2, 4, 5, 15);
+		plataforma_1.setColor(255, 0, 0);
+		plataforma_1.setPos(-5.0f, 3.0f, 2.0f, 3.0f);
+		plataforma_2.setColor(255, 0, 0);
+		plataforma_2.setPos(4.0f, 6.0f, 6.0f, 6.0f);
+		plataforma_3.setColor(255, 0, 0);
+		plataforma_3.setPos(8.0f, 8.0f, 10.0f, 8.0f);
+		plataforma_4.setColor(255, 0, 0);
+		plataforma_4.setPos(13.0f, 8.0f, 18.0f, 8.0f);
+		/*Esfera *e1 = new Esfera(1.5f, 2, 4, 5, 15);
 		e1->setColor(0, 0, 255);
 		esferas.agregar(e1); //esfera*/
 	}
