@@ -6,13 +6,13 @@
 Caja::Caja()
 {
 	suelo.setColor(0, 100, 0);
-	suelo.setPos(-10.0f, 0, 10.0f, 0);
+	suelo.setPos(-10.0f, 0, 20.0f, 0);
 	techo.setColor(0, 100, 0);
-	techo.setPos(-10.0f, 15.0f, 10.0f, 15.0f);
+	techo.setPos(-10.0f, 15.0f, 20.0f, 15.0f);
 	pared_dcha.setColor(0, 150, 0);
 	pared_dcha.setPos(-10.0f, 0, -10.0f, 15.0f);
 	pared_izq.setColor(0, 150, 0);
-	pared_izq.setPos(10.0f, 0, 10.0f, 15.0f);
+	pared_izq.setPos(20.0f, 0, 20.0f, 15.0f);
 }
 
 Caja::~Caja()
@@ -34,8 +34,8 @@ void Caja::dibuja()
 	glColor3f(1, 1, 1);
 
 	glTexCoord2d(0, 1);		glVertex3f(-10, 0, -0.1);
-	glTexCoord2d(1, 1);		glVertex3f(10, 0, -0.1);
-	glTexCoord2d(1, 0);		glVertex3f(10, 15, -0.1);
+	glTexCoord2d(1, 1);		glVertex3f(20, 0, -0.1);
+	glTexCoord2d(1, 0);		glVertex3f(20, 15, -0.1);
 	glTexCoord2d(0, 0);		glVertex3f(-10, 15, -0.1);
 	glEnd();
 
