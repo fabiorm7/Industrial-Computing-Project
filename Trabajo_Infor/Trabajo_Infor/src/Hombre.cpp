@@ -8,6 +8,7 @@ Hombre::Hombre() :sprite("imagenes/pangPlayer.png", 5)
 	sprite.setCenter(1, 0);
 	sprite.setSize(2, 2);
 	radio = 1.8f;
+	aceleracion.y = -9.8f;
 }
 
 Hombre::~Hombre()
