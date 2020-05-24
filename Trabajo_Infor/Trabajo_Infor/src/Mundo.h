@@ -1,11 +1,11 @@
 //Práctica 5 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
 
 #include "Caja.h"
-/*#include "Hombre.h"
-#include "Esfera.h"
+#include "Hombre.h"
+#include "Interaccion.h"
+/*#include "Esfera.h"
 #include "Bonus.h"
 #include "Disparo.h"
-#include "Interaccion.h"
 #include "ListaEsferas.h"
 #include "ListaDisparos.h"
 #include "EsferaPulsante.h"
@@ -33,8 +33,8 @@ private:
 	float z_obs;
 	//bool impacto;
 	int nivel;
-	/*Hombre hombre;
-	Bonus bonus;
+	Hombre hombre;
+	/*Bonus bonus;
 	ListaEsferas esferas;
 	ListaDisparos disparos;
 	DisparoEspecial disparo_especial;*/
