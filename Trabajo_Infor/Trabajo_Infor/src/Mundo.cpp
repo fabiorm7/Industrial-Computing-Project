@@ -25,19 +25,23 @@ void Mundo::Dibuja()
 	plataforma_2.dibuja();
 	plataforma_3.dibuja();
 	plataforma_4.dibuja();
-	/*hombre.dibuja();
-	disparos.dibuja();
+	hombre.dibuja();
+	/*disparos.dibuja();
 	bonus.dibuja();
 	esferas.dibuja();*/
 }
 
 void Mundo::Mueve()
 {
-	/*hombre.mueve(0.025f);
-	bonus.mueve(0.025f);
+	hombre.mueve(0.025f);
+	Interaccion::rebote(hombre, caja);
+	Interaccion::rebote(hombre, plataforma_1);
+	Interaccion::rebote(hombre, plataforma_2);
+	Interaccion::rebote(hombre, plataforma_3);
+	Interaccion::rebote(hombre, plataforma_4);
+	/*bonus.mueve(0.025f);
 	disparos.mueve(0.025f);
 	esferas.mueve(0.025f);
-	Interaccion::rebote(hombre, caja);
 	esferas.rebote(caja);
 	esferas.rebote(plataforma);
 	esferas.rebote();
@@ -117,12 +121,17 @@ void Mundo::teclaEspecial(unsigned char key)
 	case GLUT_KEY_LEFT:
 		x_obs -= 0.05f;
 		x_ojo -= 0.05f;
-		//hombre.setVel(-5.0f, 0.0f);
+		hombre.setVel(-5.0f, 0.0f);
 		break;
 	case GLUT_KEY_RIGHT:
 		x_obs += 0.05f;
 		x_ojo += 0.05f;
-		//hombre.setVel(5.0f, 0.0f);
+		hombre.setVel(5.0f, 0.0f);
+		break;
+	case GLUT_KEY_UP:
+		if (hombre.getVel().y < -10.0f) {
+			hombre.setVel(0.0f, 10.0f);
+		}
 		break;
 	}
 }
