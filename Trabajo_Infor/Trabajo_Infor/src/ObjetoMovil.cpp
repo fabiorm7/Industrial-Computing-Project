@@ -44,6 +44,11 @@ float ObjetoMovil::getRadio()
 	return radio;
 }
 
+Vector2D ObjetoMovil::getVel()
+{
+	return velocidad;
+}
+
 void ObjetoMovil::setRadio(float r)
 {
 	radio = r;
