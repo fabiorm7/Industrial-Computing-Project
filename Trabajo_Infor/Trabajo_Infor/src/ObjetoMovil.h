@@ -19,5 +19,6 @@ public:
 	void setVel(float vx, float vy);
 	Vector2D getPos();
 	float getRadio();
+	Vector2D getVel();
 	void setRadio(float r);
 };
