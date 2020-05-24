@@ -10,6 +10,7 @@
 class Interaccion {
 public:
 	static void rebote(Hombre& h, Caja c);
+	static void rebote(Hombre& h, Pared p);
 	Interaccion();
 	virtual ~Interaccion();
 	static bool rebote(Esfera &e, Pared p);
