@@ -16,7 +16,7 @@ void Interaccion::rebote(Hombre &h, Caja c)
 	if (h.posicion.y < ymin) h.posicion.y = ymin;
 }
 
-void Interaccion::rebote(Hombre &h, Pared p)
+bool Interaccion::rebote(Hombre &h, Pared p)
 {
 	/*if (h.posicion.x > p.limite1.x && h.posicion.x < p.limite2.x) {
 		float y = p.limite1.y;
@@ -24,11 +24,11 @@ void Interaccion::rebote(Hombre &h, Pared p)
 	}*/
 	Vector2D dir;
 	float dif = p.distancia(h.posicion, &dir) - h.radio/2;
-	if (dif < 0.0f) {
+	if (dif <= 0.0f) {
 		h.posicion.y = p.limite1.y;
-		/*Vector2D v_inicial = h.velocidad;
-		h.velocidad = v_inicial - dir * 2.0*(v_inicial*dir);*/
+		return true;
 	}
+	return false;
 }
 
 Interaccion::Interaccion()
@@ -162,5 +162,13 @@ bool Interaccion::colision(Disparo d, Esfera e)
 	float dist = aux.distancia(e.posicion, NULL); //para calcular su distancia
 	if (dist < e.radio)
 		return true;
+	return false;
+}
+
+bool Interaccion::enPlataforma(Hombre h, Pared p)
+{
+	if (rebote(h, p) || h.getPos().y == 0) {
+		return true;
+	}
 	return false;
 }
