@@ -3,6 +3,7 @@
 #include "Caja.h"
 #include "Hombre.h"
 #include "Interaccion.h"
+#include "ListaPlataformas.h"
 /*#include "Esfera.h"
 #include "Bonus.h"
 #include "Disparo.h"
@@ -38,9 +39,6 @@ private:
 	ListaEsferas esferas;
 	ListaDisparos disparos;
 	DisparoEspecial disparo_especial;*/
-	Pared plataforma_1;
-	Pared plataforma_2;
-	Pared plataforma_3;
-	Pared plataforma_4;
+	ListaPlataformas plataformas;
 	Caja caja;
 };
