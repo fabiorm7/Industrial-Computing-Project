@@ -34,6 +34,13 @@ void Mundo::Dibuja()
 void Mundo::Mueve()
 {
 	hombre.mueve(0.025f);
+	x_obs = x_ojo = hombre.getPos().x;
+	if (x_obs < 0) {
+		x_ojo = x_obs = 0.0f;
+	}
+	if (x_obs > 10) {
+		x_ojo = x_obs = 10.0f;
+	}
 	Interaccion::rebote(hombre, caja);
 	Interaccion::rebote(hombre, plataforma_1);
 	Interaccion::rebote(hombre, plataforma_2);
@@ -119,19 +126,20 @@ void Mundo::teclaEspecial(unsigned char key)
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
-		x_obs -= 0.05f;
-		x_ojo -= 0.05f;
-		hombre.setVel(-5.0f, 0.0f);
+		hombre.setVel(-5.0f, -5.0f);
+		//hombre.setMov(-1.0f);
 		break;
 	case GLUT_KEY_RIGHT:
-		x_obs += 0.05f;
-		x_ojo += 0.05f;
-		hombre.setVel(5.0f, 0.0f);
+		hombre.setVel(5.0f, -5.0f);
+		//hombre.setMov(1.0f);
 		break;
 	case GLUT_KEY_UP:
 		if (hombre.getVel().y < -10.0f) {
 			hombre.setVel(0.0f, 10.0f);
 		}
+		break;
+	case GLUT_KEY_DOWN:
+		hombre.setVel(0.0f, -7.0f);
 		break;
 	}
 }
@@ -148,7 +156,7 @@ int Mundo::getNumEsferas()
 bool Mundo::cargarNivel()
 {
 	nivel++;
-	//hombre.setPos(0, 0);
+	hombre.setPos(0, 0);
 	//esferas.destruirContenido();
 	//disparos.destruirContenido();
 	if (nivel == 1)
