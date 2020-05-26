@@ -17,6 +17,7 @@ public:
 	void setPos(float x, float y);
 	void setPos(Vector2D pos);
 	void setVel(float vx, float vy);
+	void setMov(float distancia);
 	Vector2D getPos();
 	float getRadio();
 	Vector2D getVel();
