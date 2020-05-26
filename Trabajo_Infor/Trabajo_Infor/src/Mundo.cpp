@@ -21,10 +21,7 @@ void Mundo::Dibuja()
 
 	//aqui es donde hay que poner el codigo de dibujo
 	caja.dibuja();
-	plataforma_1.dibuja();
-	plataforma_2.dibuja();
-	plataforma_3.dibuja();
-	plataforma_4.dibuja();
+	plataformas.dibuja();
 	hombre.dibuja();
 	/*disparos.dibuja();
 	bonus.dibuja();
@@ -42,10 +39,9 @@ void Mundo::Mueve()
 		x_ojo = x_obs = 10.0f;
 	}
 	Interaccion::rebote(hombre, caja);
-	Interaccion::rebote(hombre, plataforma_1);
-	Interaccion::rebote(hombre, plataforma_2);
-	Interaccion::rebote(hombre, plataforma_3);
-	Interaccion::rebote(hombre, plataforma_4);
+	for (int i = 0; i < plataformas.getNumero(); i++) {
+		Interaccion::rebote(hombre, *plataformas[i]);
+	}
 	/*bonus.mueve(0.025f);
 	disparos.mueve(0.025f);
 	esferas.mueve(0.025f);
@@ -134,8 +130,11 @@ void Mundo::teclaEspecial(unsigned char key)
 		//hombre.setMov(1.0f);
 		break;
 	case GLUT_KEY_UP:
-		if (hombre.getVel().y < -10.0f) {
-			hombre.setVel(0.0f, 10.0f);
+		//if (hombre.getVel().y <= -9.8f) {
+		for (int i = 0; i < plataformas.getNumero(); i++) {
+			if (Interaccion::enPlataforma(hombre, *plataformas[i])) {
+				hombre.setVel(0.0f, 10.0f);
+			}
 		}
 		break;
 	case GLUT_KEY_DOWN:
@@ -161,14 +160,22 @@ bool Mundo::cargarNivel()
 	//disparos.destruirContenido();
 	if (nivel == 1)
 	{
-		plataforma_1.setColor(255, 0, 0);
-		plataforma_1.setPos(-5.0f, 3.0f, 2.0f, 3.0f);
-		plataforma_2.setColor(255, 0, 0);
-		plataforma_2.setPos(4.0f, 6.0f, 6.0f, 6.0f);
-		plataforma_3.setColor(255, 0, 0);
-		plataforma_3.setPos(8.0f, 8.0f, 10.0f, 8.0f);
-		plataforma_4.setColor(255, 0, 0);
-		plataforma_4.setPos(13.0f, 8.0f, 18.0f, 8.0f);
+		Pared *p1 = new Pared();
+		p1->setColor(255, 0, 0);
+		p1->setPos(-5.0f, 3.0f, 2.0f, 3.0f);
+		plataformas.agregar(p1);
+		Pared *p2 = new Pared();
+		p2->setColor(255, 0, 0);
+		p2->setPos(4.0f, 6.0f, 6.0f, 6.0f);
+		plataformas.agregar(p2);
+		Pared *p3 = new Pared();
+		p3->setColor(255, 0, 0);
+		p3->setPos(8.0f, 8.0f, 10.0f, 8.0f);
+		plataformas.agregar(p3);
+		Pared *p4 = new Pared();
+		p4->setColor(255, 0, 0);
+		p4->setPos(13.0f, 8.0f, 18.0f, 8.0f);
+		plataformas.agregar(p4);
 		/*Esfera *e1 = new Esfera(1.5f, 2, 4, 5, 15);
 		e1->setColor(0, 0, 255);
 		esferas.agregar(e1); //esfera*/
