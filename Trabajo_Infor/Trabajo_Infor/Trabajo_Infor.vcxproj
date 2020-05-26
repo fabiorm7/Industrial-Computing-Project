@@ -23,6 +23,7 @@
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\ListaDisparos.cpp" />
     <ClCompile Include="src\ListaEsferas.cpp" />
+    <ClCompile Include="src\ListaPlataformas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ObjetoMovil.cpp" />
     <ClCompile Include="src\Videojuego.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\ListaDisparos.h" />
     <ClInclude Include="src\ListaEsferas.h" />
+    <ClInclude Include="src\ListaPlataformas.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\ObjetoMovil.h" />
     <ClInclude Include="src\Pared.h" />
