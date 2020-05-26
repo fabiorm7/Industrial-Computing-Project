@@ -10,17 +10,24 @@ void Interaccion::rebote(Hombre &h, Caja c)
 	float xmin = c.suelo.limite1.x;
 	float ymax = c.pared_izq.limite2.y;
 	float ymin = c.pared_izq.limite1.y;
-	if (h.posicion.x > xmax)h.posicion.x = xmax;
-	if (h.posicion.x < xmin)h.posicion.x = xmin;
-	if (h.posicion.y > ymax)h.posicion.y = ymax;
-	if (h.posicion.y < ymin)h.posicion.y = ymin;
+	if (h.posicion.x > xmax) h.posicion.x = xmax;
+	if (h.posicion.x < xmin) h.posicion.x = xmin;
+	if (h.posicion.y > ymax) h.posicion.y = ymax;
+	if (h.posicion.y < ymin) h.posicion.y = ymin;
 }
 
 void Interaccion::rebote(Hombre &h, Pared p)
 {
-	if (h.posicion.x > p.limite1.x && h.posicion.x < p.limite2.x) {
+	/*if (h.posicion.x > p.limite1.x && h.posicion.x < p.limite2.x) {
 		float y = p.limite1.y;
 		if (h.posicion.y <= y)h.posicion.y = y;
+	}*/
+	Vector2D dir;
+	float dif = p.distancia(h.posicion, &dir) - h.radio/2;
+	if (dif < 0.0f) {
+		h.posicion.y = p.limite1.y;
+		/*Vector2D v_inicial = h.velocidad;
+		h.velocidad = v_inicial - dir * 2.0*(v_inicial*dir);*/
 	}
 }
 
