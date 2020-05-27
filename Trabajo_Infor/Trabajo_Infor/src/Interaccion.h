@@ -11,6 +11,7 @@ class Interaccion {
 public:
 	static void rebote(Hombre& h, Caja c);
 	static bool rebote(Hombre& h, Pared p);
+	static bool finNivel(Hombre& h, Pared p);
 	Interaccion();
 	virtual ~Interaccion();
 	static bool rebote(Esfera &e, Pared p);
@@ -20,5 +21,4 @@ public:
 	static bool colision(Disparo d, Pared p);
 	static bool colision(Disparo d, Caja c);
 	static bool colision(Disparo d, Esfera e);
-	static bool enPlataforma(Hombre h, Pared p);
 };
