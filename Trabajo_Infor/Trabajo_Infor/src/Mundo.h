@@ -22,6 +22,8 @@ public:
 	void Mueve();
 	void Dibuja();
 	void teclaEspecial(unsigned char key);
+	bool finNivel;
+	//bool finNivel();
 	/*bool getImpacto();
 	int getNumEsferas();*/
 	bool cargarNivel();
