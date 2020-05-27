@@ -56,12 +56,12 @@ void CoordinadorJuego::mueve()
 	if (estado == JUEGO)
 	{
 		mundo.Mueve();
-		/*if (mundo.getNumEsferas() == 0)
+		if (mundo.finNivel)
 		{
 			if (!mundo.cargarNivel())
 				estado = FIN;
 		}
-		if (mundo.getImpacto())
+		/*if (mundo.getImpacto())
 		{
 			estado = GAMEOVER;
 		}*/
