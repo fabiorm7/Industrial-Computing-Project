@@ -34,11 +34,6 @@ void ObjetoMovil::setVel(float vx, float vy)
 	velocidad.y = vy;
 }
 
-void ObjetoMovil::setMov(float distancia)
-{
-	posicion.x += distancia;
-}
-
 Vector2D ObjetoMovil::getPos()
 {
 	return posicion;
