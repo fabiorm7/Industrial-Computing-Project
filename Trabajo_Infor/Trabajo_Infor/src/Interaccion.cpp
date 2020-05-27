@@ -23,9 +23,20 @@ bool Interaccion::rebote(Hombre &h, Pared p)
 		if (h.posicion.y <= y)h.posicion.y = y;
 	}*/
 	Vector2D dir;
-	float dif = p.distancia(h.posicion, &dir) - h.radio/2;
-	if (dif <= 0.0f) {
-		h.posicion.y = p.limite1.y;
+	float dif = p.distancia(h.posicion, &dir) - h.radio/4;
+	if (h.getVel().y <= 0) {
+		if (dif < 0.0f) {
+			h.posicion.y = p.limite1.y;
+			h.setVel_y(0.0f);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Interaccion::finNivel(Hombre & h, Pared p)
+{
+	if (h.getPos().x == p.limite1.x && h.getPos().y >= p.limite1.y && h.getPos().y <= p.limite2.y) {
 		return true;
 	}
 	return false;
@@ -162,13 +173,5 @@ bool Interaccion::colision(Disparo d, Esfera e)
 	float dist = aux.distancia(e.posicion, NULL); //para calcular su distancia
 	if (dist < e.radio)
 		return true;
-	return false;
-}
-
-bool Interaccion::enPlataforma(Hombre h, Pared p)
-{
-	if (rebote(h, p) || h.getPos().y == 0) {
-		return true;
-	}
 	return false;
 }
