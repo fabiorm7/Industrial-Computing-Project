@@ -22,8 +22,8 @@ public:
 	void Mueve();
 	void Dibuja();
 	void teclaEspecial(unsigned char key);
-	bool finNivel;
-	//bool finNivel();
+	bool getCaida();
+	bool finNivel();
 	/*bool getImpacto();
 	int getNumEsferas();*/
 	bool cargarNivel();
@@ -34,6 +34,9 @@ private:
 	float x_obs;
 	float y_obs;
 	float z_obs;
+	bool finNiv;
+	bool lugarAlto;
+	bool caidaAlta;
 	//bool impacto;
 	int nivel;
 	Hombre hombre;
