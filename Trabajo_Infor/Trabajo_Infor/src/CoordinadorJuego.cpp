@@ -56,15 +56,15 @@ void CoordinadorJuego::mueve()
 	if (estado == JUEGO)
 	{
 		mundo.Mueve();
-		if (mundo.finNivel)
+		if (mundo.finNivel())
 		{
 			if (!mundo.cargarNivel())
 				estado = FIN;
 		}
-		/*if (mundo.getImpacto())
+		if (mundo.getCaida())
 		{
 			estado = GAMEOVER;
-		}*/
+		}
 	}
 }
 
@@ -94,6 +94,9 @@ void CoordinadorJuego::dibuja()
 	}
 	else if (estado == GAMEOVER)
 	{
+		gluLookAt(0.0, 3.5, 30.0,  // posicion del ojo
+			0.0, 3.5, 0.0,      // hacia que punto mira  (0,0,0) 
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 		mundo.Dibuja();
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
@@ -109,6 +112,9 @@ void CoordinadorJuego::dibuja()
 		ETSIDI::printxy("Pulsa -C- para continuar", -5, 6);
 	}
 	else if (estado == PAUSA) {
+		gluLookAt(0.0, 3.5, 30.0,  // posicion del ojo
+			0.0, 3.5, 0.0,      // hacia que punto mira  (0,0,0) 
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 		mundo.Dibuja();
 		ETSIDI::setTextColor(1, 1, 0);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
