@@ -42,7 +42,18 @@ void Mundo::Mueve()
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::rebote(hombre, *plataformas[i]);
 	}
-	finNivel = Interaccion::finNivel(hombre, *plataformas[6]);
+	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);
+	for (int i = 0; i < plataformas.getNumero(); i++) {
+		if (hombre.getPos().y >= 8.0f) {
+			lugarAlto = true;
+		}
+		if (Interaccion::rebote(hombre, *plataformas[i]) && hombre.getPos().y < 8.0f) {
+			lugarAlto = false;
+		}
+	}
+	if (lugarAlto && hombre.getPos().y == 0.0f) {
+		caidaAlta = true;
+	}
 	/*bonus.mueve(0.025f);
 	disparos.mueve(0.025f);
 	esferas.mueve(0.025f);
@@ -74,7 +85,9 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()
 {
-	finNivel = false;
+	finNiv = false;
+	caidaAlta = false;
+	lugarAlto = false;
 	//impacto = false;
 	nivel = 0;
 	/*x_ojo = 0;
@@ -83,6 +96,7 @@ void Mundo::Inicializa()
 	y_obs = y_ojo;
 	x_obs = z_obs = 0.0f;*/
 	//bonus.setPos(5.0f, 5.0f);
+	hombre.setVel(0.0f, 0.0f);
 	cargarNivel();
 }
 
@@ -146,6 +160,15 @@ void Mundo::teclaEspecial(unsigned char key)
 		hombre.setVel(0.0f, -7.0f);
 		break;
 	}
+}
+
+bool Mundo::getCaida() {
+	return caidaAlta;
+}
+
+bool Mundo::finNivel()
+{
+	return finNiv;
 }
 
 /*bool Mundo::getImpacto() {
@@ -216,8 +239,3 @@ bool Mundo::cargarNivel()
 		return true;
 	return false;
 }
-
-/*bool Mundo::finNivel()
-{
-	return Interaccion::finNivel(hombre, puerta);
-}*/
