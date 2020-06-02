@@ -4,17 +4,17 @@
 #include "Hombre.h"
 #include "Interaccion.h"
 #include "ListaPlataformas.h"
+#include "ListaDisparos.h"
 /*#include "Esfera.h"
 #include "Bonus.h"
 #include "Disparo.h"
 #include "ListaEsferas.h"
-#include "ListaDisparos.h"
 #include "EsferaPulsante.h"
 #include "DisparoEspecial.h"*/
 
 class Mundo
 {
-public: 
+public:
 	virtual ~Mundo();
 	void Tecla(unsigned char key);
 	void Inicializa();
@@ -40,9 +40,9 @@ private:
 	//bool impacto;
 	int nivel;
 	Hombre hombre;
+	ListaDisparos disparos;
 	/*Bonus bonus;
 	ListaEsferas esferas;
-	ListaDisparos disparos;
 	DisparoEspecial disparo_especial;*/
 	ListaPlataformas plataformas;
 	Caja caja;
