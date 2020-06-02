@@ -7,7 +7,7 @@
 class DisparoEspecial :public Disparo
 {
 public:
-	DisparoEspecial();
+	DisparoEspecial(float vhom);
 	virtual ~DisparoEspecial();
 	void dibuja();
 };
