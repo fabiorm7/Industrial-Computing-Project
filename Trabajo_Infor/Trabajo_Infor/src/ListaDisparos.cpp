@@ -5,9 +5,6 @@
 
 ListaDisparos::ListaDisparos()
 {
-	/*numero = 0;
-	for (int i = 0;i<MAX_DISPAROS;i++)
-		lista[i] = 0;*/
 }
 
 ListaDisparos::~ListaDisparos()
@@ -61,7 +58,7 @@ void ListaDisparos::colision(Caja c)
 	for (int i = 0;i<numero;i++)
 	{
 		if (Interaccion::colision(*(lista[i]), c))
-			lista[i]->setVel(0, 0);
+			eliminar(lista[i]);
 	}
 }
 
