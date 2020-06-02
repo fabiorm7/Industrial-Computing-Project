@@ -18,10 +18,6 @@ void Interaccion::rebote(Hombre &h, Caja c)
 
 bool Interaccion::rebote(Hombre &h, Pared p)
 {
-	/*if (h.posicion.x > p.limite1.x && h.posicion.x < p.limite2.x) {
-		float y = p.limite1.y;
-		if (h.posicion.y <= y)h.posicion.y = y;
-	}*/
 	Vector2D dir;
 	float dif = p.distancia(h.posicion, &dir) - h.radio/4;
 	if (h.getVel().y <= 0) {
@@ -152,7 +148,7 @@ bool Interaccion::colision(Esfera e, Hombre h)
 bool Interaccion::colision(Disparo d, Pared p)
 {
 	Vector2D pos = d.getPos();
-	float dis = p.distancia(pos,NULL);
+	float dis = p.distancia(pos, NULL);
 	if (dis<d.getRadio()) {
 		return true;
 	}
@@ -161,7 +157,11 @@ bool Interaccion::colision(Disparo d, Pared p)
 
 bool Interaccion::colision(Disparo d, Caja c)
 {
-	return colision(d,c.techo);
+	if (colision(d, c.techo)) return true;
+	else if (colision(d, c.pared_dcha)) return true;
+	else if (colision(d, c.pared_izq)) return true;
+	else if (colision(d, c.suelo)) return true;
+	else return false;
 }
 
 bool Interaccion::colision(Disparo d, Esfera e)
