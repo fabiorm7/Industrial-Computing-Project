@@ -3,10 +3,18 @@
 #include "Disparo.h"
 #include "glut.h"
 
-Disparo::Disparo()
+Disparo::Disparo(float vhombre)
 {
 	radio = 0.25f;
-	velocidad.y = 10.0f;
+	if (vhombre < 0) {
+		velocidad.x = -10.0f;
+	}
+	else if (vhombre > 0) {
+		velocidad.x = 10.0f;
+	}
+	else {
+		velocidad.y = 10.0f;
+	}
 }
 
 Disparo::~Disparo()
@@ -38,6 +46,6 @@ void Disparo::setPos(Vector2D pos)
 void Disparo::setPos(float x, float y)
 {
 	posicion.x = x;
-	posicion.y = y;
+	posicion.y = y + 0.7f;
 	origen = posicion;
 }
