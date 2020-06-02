@@ -8,7 +8,7 @@
 class Disparo :public ObjetoMovil
 {
 public:
-	Disparo();
+	Disparo(float vhombre);
 	virtual ~Disparo();
 	virtual void dibuja();
 	friend class Interaccion;
