@@ -23,8 +23,8 @@ void Mundo::Dibuja()
 	caja.dibuja();
 	plataformas.dibuja();
 	hombre.dibuja();
-	/*disparos.dibuja();
-	bonus.dibuja();
+	disparos.dibuja();
+	/*bonus.dibuja();
 	esferas.dibuja();*/
 }
 
@@ -54,13 +54,13 @@ void Mundo::Mueve()
 	if (lugarAlto && hombre.getPos().y == 0.0f) {
 		caidaAlta = true;
 	}
-	/*bonus.mueve(0.025f);
 	disparos.mueve(0.025f);
+	disparos.colision(caja);
+	/*bonus.mueve(0.025f);
 	esferas.mueve(0.025f);
 	esferas.rebote(caja);
 	esferas.rebote(plataforma);
 	esferas.rebote();
-	disparos.colision(caja);
 	disparos.colision(plataforma);
 	for (int i = 0; i < esferas.getNumero(); i++)
 	{
@@ -103,8 +103,8 @@ void Mundo::Inicializa()
 Mundo::~Mundo()
 {
 	plataformas.destruirContenido();
-	/*esferas.destruirContenido();
-	disparos.destruirContenido();*/
+	//esferas.destruirContenido();
+	disparos.destruirContenido();
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -113,12 +113,12 @@ void Mundo::Tecla(unsigned char key)
 	{
 	case ' ':
 		{
-		/*Disparo* d = new Disparo();
+		Disparo* d = new Disparo(hombre.getVel().x);
 		Vector2D pos = hombre.getPos();
+		pos.y += 0.7f;
 		d->setPos(pos);
 		disparos.agregar(d);
-		hombre.setVel(0, 0);
-		ETSIDI::play("sonidos/disparo.wav");*/
+		ETSIDI::play("sonidos/disparo.wav");
 		break;
 		}
 	case 'z':
@@ -191,7 +191,7 @@ bool Mundo::cargarNivel()
 	hombre.setPos(0, 0);
 	plataformas.destruirContenido();
 	//esferas.destruirContenido();
-	//disparos.destruirContenido();
+	disparos.destruirContenido();
 	if (nivel == 1)
 	{
 		Pared *p1 = new Pared();
