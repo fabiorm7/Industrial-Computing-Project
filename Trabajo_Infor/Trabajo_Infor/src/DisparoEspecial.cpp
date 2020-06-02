@@ -3,11 +3,19 @@
 #include "DisparoEspecial.h"
 #include "glut.h"
 
-DisparoEspecial::DisparoEspecial()
+/*DisparoEspecial::DisparoEspecial(float vhom)
 {
 	radio = 0.4f;
-	velocidad.y = 15;
-}
+	if (vhom < 0) {
+		velocidad.x = -15.0f;
+	}
+	else if (vhom > 0) {
+		velocidad.x = 15.0f;
+	}
+	else {
+		velocidad.y = 15.0f;
+	}
+}*/
 
 DisparoEspecial::~DisparoEspecial()
 {
