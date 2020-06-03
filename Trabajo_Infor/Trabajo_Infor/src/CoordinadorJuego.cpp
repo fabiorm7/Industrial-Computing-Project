@@ -63,7 +63,7 @@ void CoordinadorJuego::mueve()
 			if (!mundo.cargarNivel())
 				estado = FIN;
 		}
-		if (mundo.getCaida())
+		if (mundo.getCaida() || mundo.getImpacto())
 		{
 			estado = GAMEOVER;
 		}
