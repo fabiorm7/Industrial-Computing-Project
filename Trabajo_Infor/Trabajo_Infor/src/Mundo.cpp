@@ -1,11 +1,11 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Gestión principal del juego
 
 #include "Mundo.h"
 #include "ETSIDI.h"
 #include "glut.h"
 #include <math.h>
 
-void Mundo::RotarOjo()
+void Mundo::RotarOjo()//No sé si nos sirve para algo, no la he tocado desde la práctica 2, creo que es prescindible
 {
 	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
 	float ang=atan2(z_ojo,x_ojo);
@@ -31,7 +31,7 @@ void Mundo::Dibuja()
 void Mundo::Mueve()
 {
 	hombre.mueve(0.025f);
-	x_obs = x_ojo = hombre.getPos().x;
+	x_obs = x_ojo = hombre.getPos().x;//La vista acompaña al personaje
 	if (x_obs < 0) {
 		x_ojo = x_obs = 0.0f;
 	}
@@ -39,19 +39,23 @@ void Mundo::Mueve()
 		x_ojo = x_obs = 10.0f;
 	}
 	Interaccion::rebote(hombre, caja);
-	for (int i = 0; i < plataformas.getNumero(); i++) {
+	for (int i = 0; i < plataformas.getNumero(); i++) {//Para mantenerse sobre las plataformas
 		Interaccion::rebote(hombre, *plataformas[i]);
 	}
-	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);
-	for (int i = 0; i < plataformas.getNumero(); i++) {
+	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);//Fin cuando atraviesa la puerta. 
+	//El índice de la plataforma debe ser alto porque no sabemos cuántas habrá y si nos pasamos automáticamente 
+	//nos coge la última (que debería ser la puerta)
+
+	for (int i = 0; i < plataformas.getNumero(); i++) {//Indica que el personaje está en un lugar alto para la muerte por caída
 		if (hombre.getPos().y >= 8.0f) {
 			lugarAlto = true;
 		}
+		//Si desde la altura ha bajado antes a una plataforma más baja se resetea la variable pra no morir
 		if (Interaccion::rebote(hombre, *plataformas[i]) && hombre.getPos().y < 8.0f) {
 			lugarAlto = false;
 		}
 	}
-	if (lugarAlto && hombre.getPos().y == 0.0f) {
+	if (lugarAlto && hombre.getPos().y == 0.0f) {//Si estaba en lugar alto y llega al suelo sin pasar por una plataforma muere
 		caidaAlta = true;
 	}
 	disparos.mueve(0.025f);
@@ -115,7 +119,7 @@ void Mundo::Tecla(unsigned char key)
 		{
 		Disparo* d = new Disparo(hombre.getVel().x);
 		Vector2D pos = hombre.getPos();
-		pos.y += 0.7f;
+		pos.y += 0.7f;//Si no dispara desde el suelo
 		d->setPos(pos);
 		disparos.agregar(d);
 		ETSIDI::play("sonidos/disparo.wav");
@@ -144,7 +148,7 @@ void Mundo::teclaEspecial(unsigned char key)
 	case GLUT_KEY_RIGHT:
 		hombre.setVel_x(5.0f);
 		break;
-	case GLUT_KEY_UP:
+	case GLUT_KEY_UP://Si el hombre está en el suelo o sobre una plataforma podrá saltar, si no, no
 		if (hombre.getPos().y == 0) {
 			hombre.setVel_y(8.0f);
 			break;
@@ -157,7 +161,7 @@ void Mundo::teclaEspecial(unsigned char key)
 		}
 		break;
 	case GLUT_KEY_DOWN:
-		hombre.setVel(0.0f, -7.0f);
+		hombre.setVel(0.0f, -7.0f);//Detiene al personaje porque no se frena solo en el eje x. Si está en el aire aumenta la velocidad de caída
 		break;
 	}
 }
@@ -192,7 +196,7 @@ bool Mundo::cargarNivel()
 	plataformas.destruirContenido();
 	//esferas.destruirContenido();
 	disparos.destruirContenido();
-	if (nivel == 1)
+	if (nivel == 1)//El nivel 1 solo tiene 4 plataformas y la puerta final, es como un tutorial para el jugador
 	{
 		Pared *p1 = new Pared();
 		p1->setColor(255, 0, 0);
