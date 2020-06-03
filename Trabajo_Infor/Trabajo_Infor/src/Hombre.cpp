@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Personaje
 
 #include "Hombre.h"
 #include "glut.h"
@@ -7,7 +7,7 @@ Hombre::Hombre() :sprite("imagenes/pangPlayer.png", 5)
 {
 	sprite.setCenter(1, 0);
 	sprite.setSize(2, 2);
-	radio = 1.8f;
+	radio = 1.8f;//el radio es la altura, pero llamándolo asi simplificamos las clases al heredar de ObjetoMovil
 	aceleracion.y = -9.8f;
 }
 
