@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Disparo horizontal con personaje en movimiento y vertical si está parado
 
 #include "Disparo.h"
 #include "glut.h"
@@ -28,7 +28,7 @@ void Disparo::dibuja()
 	glTranslatef(posicion.x, posicion.y, 0);
 	glutSolidSphere(radio, 20, 20);
 	glPopMatrix();
-
+	//Estela del disparo (opcional)
 	glDisable(GL_LIGHTING);
 	glBegin(GL_LINES);
 	glVertex3f(origen.x, origen.y, 0);
