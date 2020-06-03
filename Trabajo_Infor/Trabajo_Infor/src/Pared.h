@@ -1,5 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
-
+//No tiene mucho misterio, dibuja una pared y tiene una función distancia
 #pragma once
 
 #include "Vector2D.h"
