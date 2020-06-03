@@ -4,7 +4,7 @@
 #include <math.h>
 
 
-void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre no salga del recinto
+void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre o losenemigos no salgan del recinto
 {
 	float xmax = c.suelo.limite2.x;
 	float xmin = c.suelo.limite1.x;
@@ -16,7 +16,7 @@ void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre no salga del rec
 	if (h.posicion.y < ymin) h.posicion.y = ymin;
 }
 
-bool Interaccion::rebote(Hombre &h, Pared p)//Para que el hombre se sostenga sobre las plataformas
+bool Interaccion::rebote(Hombre &h, Pared p)//Para que el hombre o los enemigos se sostengan sobre las plataformas
 {
 	Vector2D dir;
 	float dif = p.distancia(h.posicion, &dir) - h.radio/4;
