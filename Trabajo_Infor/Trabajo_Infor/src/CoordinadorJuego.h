@@ -1,3 +1,5 @@
+//Máquina de estados, en "JUEGO" llama a mundo que es el que realmente gestiona todo
+
 #pragma once
 
 #include "Mundo.h"
