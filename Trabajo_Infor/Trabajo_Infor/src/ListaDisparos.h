@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Lista de disparos, podemos ponerle un límite al personaje para que no dispare infinitamente
 
 #pragma once
 
