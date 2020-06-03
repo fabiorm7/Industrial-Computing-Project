@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Interacciones entre objetos, en el cpp se explica mejor
 
 #pragma once
 
