@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Lista de disparos, podemos ponerle un límite al personaje para que no dispare infinitamente
 
 #include "ListaDisparos.h"
 #include "Interaccion.h"
@@ -44,7 +44,7 @@ void ListaDisparos::dibuja()
 		lista[i]->dibuja();
 }
 
-void ListaDisparos::colision(Pared p)
+void ListaDisparos::colision(Pared p)//No se usa, es prescindible a no ser que queramos que el disparo se pare al tocar con una plataforma
 {
 	for (int i = 0;i<numero;i++)
 	{
