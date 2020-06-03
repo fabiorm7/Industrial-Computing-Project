@@ -1,10 +1,10 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Interacciones entre objetos
 
 #include "Interaccion.h"
 #include <math.h>
 
 
-void Interaccion::rebote(Hombre &h, Caja c)
+void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre no salga del recinto
 {
 	float xmax = c.suelo.limite2.x;
 	float xmin = c.suelo.limite1.x;
@@ -16,7 +16,7 @@ void Interaccion::rebote(Hombre &h, Caja c)
 	if (h.posicion.y < ymin) h.posicion.y = ymin;
 }
 
-bool Interaccion::rebote(Hombre &h, Pared p)
+bool Interaccion::rebote(Hombre &h, Pared p)//Para que el hombre se sostenga sobre las plataformas
 {
 	Vector2D dir;
 	float dif = p.distancia(h.posicion, &dir) - h.radio/4;
@@ -30,7 +30,7 @@ bool Interaccion::rebote(Hombre &h, Pared p)
 	return false;
 }
 
-bool Interaccion::finNivel(Hombre & h, Pared p)
+bool Interaccion::finNivel(Hombre & h, Pared p)//Acción en la que el hombre atraviesa la puerta del final del nivel
 {
 	if (h.getPos().x == p.limite1.x && h.getPos().y >= p.limite1.y && h.getPos().y <= p.limite2.y) {
 		return true;
@@ -46,7 +46,7 @@ Interaccion::~Interaccion()
 {
 }
 
-bool Interaccion::rebote(Esfera &e, Pared p)
+bool Interaccion::rebote(Esfera &e, Pared p)//las de esferas aún no se usan, pero son reciclables
 {
 	Vector2D dir;
 	float dif = p.distancia(e.posicion, &dir) - e.radio;
@@ -68,7 +68,7 @@ void Interaccion::rebote(Esfera & e, Caja c)
 	rebote(e, c.pared_izq);
 }
 
-bool Interaccion::rebote(Esfera &esfera1, Esfera &esfera2)
+bool Interaccion::rebote(Esfera &esfera1, Esfera &esfera2)//Es complicada y probablemente no nos sea útil
 {
 	//Hacemos un vector que una los centros y sacamos su módulo restándole los radios
 	Vector2D diferencia = esfera2.posicion - esfera1.posicion;
@@ -145,7 +145,7 @@ bool Interaccion::colision(Esfera e, Hombre h)
 	return false;
 }
 
-bool Interaccion::colision(Disparo d, Pared p)
+bool Interaccion::colision(Disparo d, Pared p)//Se usa para que los disparos se eliminen al chocar con la pared
 {
 	Vector2D pos = d.getPos();
 	float dis = p.distancia(pos, NULL);
@@ -155,7 +155,7 @@ bool Interaccion::colision(Disparo d, Pared p)
 	return false;
 }
 
-bool Interaccion::colision(Disparo d, Caja c)
+bool Interaccion::colision(Disparo d, Caja c)//Aplicación del anterior a la caja
 {
 	if (colision(d, c.techo)) return true;
 	else if (colision(d, c.pared_dcha)) return true;
