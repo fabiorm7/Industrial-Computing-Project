@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Caja que forma el marco de visión del nivel
 
 #include "Caja.h"
 #include "ETSIDI.h"
@@ -28,7 +28,7 @@ void Caja::dibuja()
 
 	glEnable(GL_TEXTURE_2D);
 
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/fondo.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/fondo.png").id); //fondo del juego
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
