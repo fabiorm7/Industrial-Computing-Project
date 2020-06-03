@@ -9,8 +9,8 @@
 
 class Interaccion {
 public:
-	static void rebote(Hombre& h, Caja c);
-	static bool rebote(Hombre& h, Pared p);
+	static void rebote(Hombre &h, Caja c);
+	static bool rebote(Hombre &h, Pared p);
 	static bool finNivel(Hombre& h, Pared p);
 	Interaccion();
 	virtual ~Interaccion();
