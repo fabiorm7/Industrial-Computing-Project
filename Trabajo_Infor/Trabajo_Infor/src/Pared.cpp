@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//No tiene mucho misterio, dibuja una pared y tiene una función distancia
 
 #include "Pared.h"
 #include "glut.h"
@@ -37,7 +37,7 @@ void Pared::setPos(float x1, float y1, float x2, float y2)
 	limite2.y = y2;
 }
 
-float Pared::distancia(Vector2D punto, Vector2D *direccion)
+float Pared::distancia(Vector2D punto, Vector2D *direccion)//Dirección se puede poner como NULL si no tenemos una concreta
 {
 	Vector2D u = (punto - limite1);
 	Vector2D v = (limite2 - limite1).unitario();
