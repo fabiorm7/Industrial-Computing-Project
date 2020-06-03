@@ -1,3 +1,5 @@
+//Lista de plataformas para mejorar su manejo y creación
+
 #pragma once
 
 #include "Pared.h"
