@@ -1,3 +1,5 @@
+//Máquina de estados, en "JUEGO" llama a mundo que es el que realmente gestiona todo
+
 #include "CoordinadorJuego.h"
 #include "ETSIDI.h"
 #include "glut.h"
@@ -94,6 +96,7 @@ void CoordinadorJuego::dibuja()
 	}
 	else if (estado == GAMEOVER)
 	{
+		//Aleja la vista para tener un visionado general del nivel
 		gluLookAt(0.0, 3.5, 30.0,  // posicion del ojo
 			0.0, 3.5, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
@@ -112,6 +115,7 @@ void CoordinadorJuego::dibuja()
 		ETSIDI::printxy("Pulsa -C- para continuar", -5, 6);
 	}
 	else if (estado == PAUSA) {
+		//Aleja la vista para tener un visionado general del nivel
 		gluLookAt(0.0, 3.5, 30.0,  // posicion del ojo
 			0.0, 3.5, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
