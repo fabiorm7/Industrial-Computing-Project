@@ -1,4 +1,4 @@
-//Lista de esferas, útil solo si la reciclamos para enemigos
+//Lista de enemigos, hay que cambiar el nombre
 
 #pragma once
 
