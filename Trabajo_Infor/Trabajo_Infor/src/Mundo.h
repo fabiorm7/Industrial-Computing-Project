@@ -1,4 +1,4 @@
-//Práctica 5 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Gestión principal del juego, se explica mejor en el cpp
 
 #include "Caja.h"
 #include "Hombre.h"
