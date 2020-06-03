@@ -24,8 +24,8 @@ void Mundo::Dibuja()
 	plataformas.dibuja();
 	hombre.dibuja();
 	disparos.dibuja();
-	/*bonus.dibuja();
-	esferas.dibuja();*/
+	esferas.dibuja();
+	//bonus.dibuja();
 }
 
 void Mundo::Mueve()
@@ -41,6 +41,8 @@ void Mundo::Mueve()
 	Interaccion::rebote(hombre, caja);
 	for (int i = 0; i < plataformas.getNumero(); i++) {//Para mantenerse sobre las plataformas
 		Interaccion::rebote(hombre, *plataformas[i]);
+
+		esferas.rebote(*plataformas[i]);
 	}
 	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);//Fin cuando atraviesa la puerta. 
 	//El índice de la plataforma debe ser alto porque no sabemos cuántas habrá y si nos pasamos automáticamente 
@@ -60,22 +62,17 @@ void Mundo::Mueve()
 	}
 	disparos.mueve(0.025f);
 	disparos.colision(caja);
-	/*bonus.mueve(0.025f);
 	esferas.mueve(0.025f);
 	esferas.rebote(caja);
-	esferas.rebote(plataforma);
 	esferas.rebote();
-	disparos.colision(plataforma);
+	/*bonus.mueve(0.025f);
+	disparos.colision(plataforma);*/
 	for (int i = 0; i < esferas.getNumero(); i++)
 	{
 		for (int j = 0; j < disparos.getNumero(); j++) {
 			if (Interaccion::colision(*disparos[j], *esferas[i]))
 			{
-				Esfera* e = esferas[i]->dividir();
-				if (e == 0) //no division
-					esferas.eliminar(esferas[i]);
-				else
-					esferas.agregar(e);
+				esferas.eliminar(esferas[i]);
 				disparos.eliminar(disparos[j]);
 				ETSIDI::play("sonidos/impacto.wav");
 				break;
@@ -84,15 +81,11 @@ void Mundo::Mueve()
 	}
 	Esfera *aux = esferas.colision(hombre);
 	if (aux != 0)
-		impacto = true;*/
+		impacto = true;
 }
 
 void Mundo::Inicializa()
 {
-	finNiv = false;
-	caidaAlta = false;
-	lugarAlto = false;
-	//impacto = false;
 	nivel = 0;
 	/*x_ojo = 0;
 	y_ojo = 7.5;
@@ -107,7 +100,7 @@ void Mundo::Inicializa()
 Mundo::~Mundo()
 {
 	plataformas.destruirContenido();
-	//esferas.destruirContenido();
+	esferas.destruirContenido();
 	disparos.destruirContenido();
 }
 
@@ -175,11 +168,11 @@ bool Mundo::finNivel()
 	return finNiv;
 }
 
-/*bool Mundo::getImpacto() {
+bool Mundo::getImpacto() {
 	return impacto;
 }
 
-int Mundo::getNumEsferas()
+/*int Mundo::getNumEsferas()
 {
 	return esferas.getNumero();
 }*/
@@ -194,8 +187,12 @@ bool Mundo::cargarNivel()
 	x_obs = z_obs = 0.0f;
 	hombre.setPos(0, 0);
 	plataformas.destruirContenido();
-	//esferas.destruirContenido();
+	esferas.destruirContenido();
 	disparos.destruirContenido();
+	impacto = false;
+	finNiv = false;
+	caidaAlta = false;
+	lugarAlto = false;
 	if (nivel == 1)//El nivel 1 solo tiene 4 plataformas y la puerta final, es como un tutorial para el jugador
 	{
 		Pared *p1 = new Pared();
@@ -221,12 +218,30 @@ bool Mundo::cargarNivel()
 	}
 	if (nivel == 2)
 	{
-		/*plataforma.setPos(-3.0f, 6.0f, 3.0f, 6.0f);
-		plataforma.setColor(255, 0, 0);
-		EsferaPulsante* e3 = new EsferaPulsante;
-		e3->setPos(0, 12);
-		e3->setVel(5, 3);
-		esferas.agregar(e3);*/
+		Pared *p1 = new Pared();
+		p1->setColor(255, 0, 0);
+		p1->setPos(13.0f, 3.0f, 18.0f, 3.0f);
+		plataformas.agregar(p1);
+		Pared *p2 = new Pared();
+		p2->setColor(255, 0, 0);
+		p2->setPos(8.0f, 6.0f, 10.0f, 6.0f);
+		plataformas.agregar(p2);
+		Pared *p3 = new Pared();
+		p3->setColor(255, 0, 0);
+		p3->setPos(2.0f, 6.0f, 6.0f, 6.0f);
+		plataformas.agregar(p3);
+		Pared *p4 = new Pared();
+		p4->setColor(255, 0, 0);
+		p4->setPos(-7.0f, 6.0f, -2.0f, 6.0f);
+		plataformas.agregar(p4);
+		Pared *puerta = new Pared();
+		puerta->setColor(0, 0, 250);
+		puerta->setPos(-5.0f, 6.0f, -5.0f, 12.0f);
+		plataformas.agregar(puerta);
+		Esfera *e1 = new Esfera(1.5f, 5.0f, 1.5f, -5.0f, 0.0f);
+		esferas.agregar(e1);
+		Esfera *e2 = new Esfera(1.5f, 10.0f, 7.0f, -3.0f, 0.0f);
+		esferas.agregar(e2);
 	}
 	if (nivel == 3)
 	{
@@ -239,7 +254,7 @@ bool Mundo::cargarNivel()
 			esferas.agregar(aux);
 		}*/
 	}
-	if (nivel <= 1)
+	if (nivel <= 2)
 		return true;
 	return false;
 }
