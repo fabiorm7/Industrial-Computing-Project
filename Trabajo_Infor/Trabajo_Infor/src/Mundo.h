@@ -5,10 +5,10 @@
 #include "Interaccion.h"
 #include "ListaPlataformas.h"
 #include "ListaDisparos.h"
+#include "ListaEsferas.h"
 /*#include "Esfera.h"
 #include "Bonus.h"
 #include "Disparo.h"
-#include "ListaEsferas.h"
 #include "EsferaPulsante.h"
 #include "DisparoEspecial.h"*/
 
@@ -24,8 +24,8 @@ public:
 	void teclaEspecial(unsigned char key);
 	bool getCaida();
 	bool finNivel();
-	/*bool getImpacto();
-	int getNumEsferas();*/
+	bool getImpacto();
+	//int getNumEsferas();
 	bool cargarNivel();
 private:
 	float x_ojo;
@@ -37,12 +37,12 @@ private:
 	bool finNiv;
 	bool lugarAlto;
 	bool caidaAlta;
-	//bool impacto;
+	bool impacto;
 	int nivel;
 	Hombre hombre;
 	ListaDisparos disparos;
-	/*Bonus bonus;
 	ListaEsferas esferas;
+	/*Bonus bonus;
 	DisparoEspecial disparo_especial;*/
 	ListaPlataformas plataformas;
 	Caja caja;
