@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Aún no se usa, el constructor está comentado porque me daba problemas al compilar
 
 #pragma once
 
