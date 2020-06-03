@@ -1,15 +1,7 @@
-//Aún no se usa, podrían ser los enemigos si no conseguimos sprites
+//Enemigo. Hay que cambiar el nombre
 
 #include "Esfera.h"
 #include "glut.h"
-
-Esfera::Esfera()
-{
-	aceleracion.y = -9.8f;
-	radio = 1.0f;
-	velocidad.x = 4;
-	velocidad.y = 4;
-}
 
 Esfera::Esfera(float rad, float x, float y, float vx, float vy)
 {
@@ -39,7 +31,7 @@ void Esfera::setColor(unsigned char r, unsigned char v, unsigned char a)
 	color.set(r, v, a);
 }
 
-Esfera* Esfera::dividir()
+/*Esfera* Esfera::dividir()
 {
 	if (radio < 1.0f)
 		return 0; //no dividimos
@@ -50,4 +42,4 @@ Esfera* Esfera::dividir()
 	aux->setVel(5, 8);//a la nueva mitad
 	setVel(-5, 8);//a la mitad original
 	return aux;
-}
+}*/
