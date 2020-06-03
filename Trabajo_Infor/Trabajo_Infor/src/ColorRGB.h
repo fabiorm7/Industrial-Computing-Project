@@ -1,4 +1,4 @@
-//Práctica 6 Ismael Gómez Pacheco 53985 grupo EE309 martes 9:30-11:30
+//Clase para simplificar lo relacionado con colores
 
 #pragma once
 
