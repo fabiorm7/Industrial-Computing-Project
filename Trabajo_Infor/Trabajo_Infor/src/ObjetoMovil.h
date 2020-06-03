@@ -21,4 +21,7 @@ public:
 	float getRadio();
 	Vector2D getVel();
 	void setRadio(float r);
+	void setVel_y(float vy) { velocidad.y = vy; }
+	void setVel_x(float vx) { velocidad.x = vx; }
+	friend class Interaccion;
 };
