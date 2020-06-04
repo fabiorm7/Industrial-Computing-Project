@@ -32,7 +32,6 @@ void Mundo::Mueve()
 	}
 	Interaccion::rebote(hombre, caja);
 	disparos.colision(caja);
-	//disparos.colision(plataforma);
 	bonus.rebote(caja);
 	enemigos.rebote(caja);
 	enemigos.rebote();
@@ -49,7 +48,7 @@ void Mundo::Mueve()
 		if (hombre.getPos().y >= 8.0f) {
 			lugarAlto = true;
 		}
-		//Si desde la altura ha bajado antes a una plataforma más baja se resetea la variable pra no morir
+		//Si desde la altura ha bajado antes a una plataforma más baja se resetea la variable para no morir
 		if (Interaccion::rebote(hombre, *plataformas[i]) && hombre.getPos().y < 8.0f) {
 			lugarAlto = false;
 		}
@@ -83,13 +82,15 @@ void Mundo::Mueve()
 		bonus.eliminar(baux);
 		disparos.aumentarMax();
 	}
+	if (nivel == 3) {
+		enemigos.crear(4.0f);
+	}
 }
 
 void Mundo::Inicializa()
 {
-	disparos.setMax(1);
+	disparos.setMax(1);//Máximo 1 disparo al empezar
 	nivel = 0;
-	marcador = 0;
 	cargarNivel();
 }
 
@@ -159,11 +160,6 @@ bool Mundo::getImpacto() {
 	return impacto;
 }
 
-/*int Mundo::getNumEsferas()
-{
-	return esferas.getNumero();
-}*/
-
 bool Mundo::cargarNivel()
 {
 	nivel++;
@@ -173,7 +169,6 @@ bool Mundo::cargarNivel()
 	y_obs = y_ojo;
 	x_obs = z_obs = 0.0f;
 	hombre.setPos(0, 0);
-	//bonus.setPos(5.0f, 5.0f);
 	hombre.setVel(0.0f, 0.0f);
 	plataformas.destruirContenido();
 	enemigos.destruirContenido();
@@ -235,16 +230,28 @@ bool Mundo::cargarNivel()
 	}
 	if (nivel == 3)
 	{
-		/*plataforma.setPos(-10.0f, 12.0f, 4.0f, 10.0f);
-		plataforma.setColor(255, 0, 255);
-		for (int i = 0; i < 5; i++)
-		{
-			Esfera* aux = new Esfera(1.5, -5 + i, 12, i, 5);
-			aux->setColor(i * 40, 0, 255 - i * 40);
-			esferas.agregar(aux);
-		}*/
+		Pared *p1 = new Pared();
+		p1->setColor(255, 0, 0);
+		p1->setPos(-5.0f, 3.0f, 2.0f, 3.0f);
+		plataformas.agregar(p1);
+		Pared *p2 = new Pared();
+		p2->setColor(255, 0, 0);
+		p2->setPos(4.0f, 6.0f, 6.0f, 6.0f);
+		plataformas.agregar(p2);
+		Pared *p3 = new Pared();
+		p3->setColor(255, 0, 0);
+		p3->setPos(8.0f, 8.0f, 10.0f, 8.0f);
+		plataformas.agregar(p3);
+		Pared *p4 = new Pared();
+		p4->setColor(255, 0, 0);
+		p4->setPos(13.0f, 8.0f, 18.0f, 8.0f);
+		plataformas.agregar(p4);
+		Pared *puerta = new Pared();
+		puerta->setColor(0, 0, 250);
+		puerta->setPos(17.0f, 8.0f, 17.0f, 14.0f);
+		plataformas.agregar(puerta);
 	}
-	if (nivel <= 2)
+	if (nivel <= 3)
 		return true;
 	return false;
 }
