@@ -21,7 +21,9 @@ public:
 	Disparo* operator [](int i);
 	void eliminar(int index);
 	void eliminar(Disparo *d);
+	void aumentarMax() { max++; }
 private:
 	Disparo * lista[MAX_DISPAROS];
 	int numero;
+	int max; //Límite de disparos, aumenta consiguiendo bonus, pero nunca superará a MAX_DISPAROS
 };
