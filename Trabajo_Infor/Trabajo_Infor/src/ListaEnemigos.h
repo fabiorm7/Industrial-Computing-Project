@@ -15,6 +15,7 @@ public:
 	bool agregar(Enemigo *e);
 	void dibuja();
 	void mueve(float t);
+	void crear(float t);
 	void rebote(Caja caja);
 	void rebote(Pared p);
 	void rebote();
