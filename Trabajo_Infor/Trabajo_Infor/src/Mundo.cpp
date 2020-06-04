@@ -5,14 +5,6 @@
 #include "glut.h"
 #include <math.h>
 
-void Mundo::RotarOjo()//No sé si nos sirve para algo, no la he tocado desde la práctica 2, creo que es prescindible
-{
-	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
-	float ang=atan2(z_ojo,x_ojo);
-	ang+=0.05f;
-	x_ojo=dist*cos(ang);
-	z_ojo=dist*sin(ang);
-}
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
@@ -25,7 +17,7 @@ void Mundo::Dibuja()
 	hombre.dibuja();
 	disparos.dibuja();
 	esferas.dibuja();
-	//bonus.dibuja();
+	bonus.dibuja();
 }
 
 void Mundo::Mueve()
@@ -39,10 +31,15 @@ void Mundo::Mueve()
 		x_ojo = x_obs = 10.0f;
 	}
 	Interaccion::rebote(hombre, caja);
+	disparos.colision(caja);
+	//disparos.colision(plataforma);
+	bonus.rebote(caja);
+	esferas.rebote(caja);
+	esferas.rebote();
 	for (int i = 0; i < plataformas.getNumero(); i++) {//Para mantenerse sobre las plataformas
 		Interaccion::rebote(hombre, *plataformas[i]);
-
 		esferas.rebote(*plataformas[i]);
+		bonus.rebote(*plataformas[i]);
 	}
 	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);//Fin cuando atraviesa la puerta. 
 	//El índice de la plataforma debe ser alto porque no sabemos cuántas habrá y si nos pasamos automáticamente 
@@ -61,17 +58,16 @@ void Mundo::Mueve()
 		caidaAlta = true;
 	}
 	disparos.mueve(0.025f);
-	disparos.colision(caja);
 	esferas.mueve(0.025f);
-	esferas.rebote(caja);
-	esferas.rebote();
-	/*bonus.mueve(0.025f);
-	disparos.colision(plataforma);*/
+	bonus.mueve(0.025f);
 	for (int i = 0; i < esferas.getNumero(); i++)
 	{
 		for (int j = 0; j < disparos.getNumero(); j++) {
 			if (Interaccion::colision(*disparos[j], *esferas[i]))
 			{
+				Bonus *b = new Bonus();
+				b->setPos(esferas[i]->getPos());
+				bonus.agregar(b);
 				esferas.eliminar(esferas[i]);
 				disparos.eliminar(disparos[j]);
 				ETSIDI::play("sonidos/impacto.wav");
@@ -82,18 +78,17 @@ void Mundo::Mueve()
 	Esfera *aux = esferas.colision(hombre);
 	if (aux != 0)
 		impacto = true;
+	Bonus *baux = bonus.colision(hombre);
+	if (baux != 0) {
+		bonus.eliminar(baux);
+		disparos.aumentarMax();
+	}
 }
 
 void Mundo::Inicializa()
 {
 	nivel = 0;
-	/*x_ojo = 0;
-	y_ojo = 7.5;
-	z_ojo = 30;
-	y_obs = y_ojo;
-	x_obs = z_obs = 0.0f;*/
-	//bonus.setPos(5.0f, 5.0f);
-	hombre.setVel(0.0f, 0.0f);
+	marcador = 0;
 	cargarNivel();
 }
 
@@ -116,16 +111,6 @@ void Mundo::Tecla(unsigned char key)
 		d->setPos(pos);
 		disparos.agregar(d);
 		ETSIDI::play("sonidos/disparo.wav");
-		break;
-		}
-	case 'z':
-		{
-		/*DisparoEspecial* z = new DisparoEspecial();
-		Vector2D pos = hombre.getPos();
-		z->setPos(pos);
-		disparos.agregar(z);
-		hombre.setVel(0, 0);
-		ETSIDI::play("sonidos/disparo.wav");*/
 		break;
 		}
 	}
@@ -186,6 +171,8 @@ bool Mundo::cargarNivel()
 	y_obs = y_ojo;
 	x_obs = z_obs = 0.0f;
 	hombre.setPos(0, 0);
+	//bonus.setPos(5.0f, 5.0f);
+	hombre.setVel(0.0f, 0.0f);
 	plataformas.destruirContenido();
 	esferas.destruirContenido();
 	disparos.destruirContenido();
