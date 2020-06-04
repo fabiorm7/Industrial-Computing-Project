@@ -12,8 +12,4 @@ public:
 	virtual ~Disparo();
 	virtual void dibuja();
 	friend class Interaccion;
-	void setPos(Vector2D pos);
-	void setPos(float x, float y);
-protected:
-	Vector2D origen;
 };
