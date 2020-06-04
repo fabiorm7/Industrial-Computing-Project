@@ -4,7 +4,7 @@
 #include <math.h>
 
 
-void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre o losenemigos no salgan del recinto
+void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre no salga del recinto
 {
 	float xmax = c.suelo.limite2.x;
 	float xmin = c.suelo.limite1.x;
@@ -16,7 +16,7 @@ void Interaccion::rebote(Hombre &h, Caja c)//Para que el hombre o losenemigos no
 	if (h.posicion.y < ymin) h.posicion.y = ymin;
 }
 
-bool Interaccion::rebote(Hombre &h, Pared p)//Para que el hombre o los enemigos se sostengan sobre las plataformas
+bool Interaccion::rebote(Hombre &h, Pared p)//Para que el hombre se sostenga sobre las plataformas
 {
 	Vector2D dir;
 	float dif = p.distancia(h.posicion, &dir) - h.radio/4;
@@ -46,7 +46,7 @@ Interaccion::~Interaccion()
 {
 }
 
-bool Interaccion::rebote(Enemigo &e, Pared p)//las de esferas aún no se usan, pero son reciclables
+bool Interaccion::rebote(Enemigo &e, Pared p)//Para que el enemigo rebote con las plataformas
 {
 	Vector2D dir;
 	float dif = p.distancia(e.posicion, &dir) - e.radio;
@@ -60,7 +60,7 @@ bool Interaccion::rebote(Enemigo &e, Pared p)//las de esferas aún no se usan, pe
 	return false;
 }
 
-void Interaccion::rebote(Enemigo & e, Caja c)
+void Interaccion::rebote(Enemigo & e, Caja c)//Para que el enemigo no salga del recinto
 {
 	rebote(e, c.suelo);
 	rebote(e, c.techo);
@@ -68,7 +68,7 @@ void Interaccion::rebote(Enemigo & e, Caja c)
 	rebote(e, c.pared_izq);
 }
 
-bool Interaccion::rebote(Bonus & b, Pared p)
+bool Interaccion::rebote(Bonus & b, Pared p)//Para que el bonus se mantenga en las plataformas
 {
 	Vector2D dir;
 	float dif = p.distancia(b.posicion, &dir) - 2*b.radio;
@@ -82,7 +82,7 @@ bool Interaccion::rebote(Bonus & b, Pared p)
 	return false;
 }
 
-void Interaccion::rebote(Bonus & b, Caja c)
+void Interaccion::rebote(Bonus & b, Caja c)//Para que el bonus no salga de la caja
 {
 	rebote(b, c.suelo);
 	rebote(b, c.techo);
@@ -90,7 +90,7 @@ void Interaccion::rebote(Bonus & b, Caja c)
 	rebote(b, c.pared_izq);
 }
 
-bool Interaccion::rebote(Enemigo &esfera1, Enemigo &esfera2)//Es complicada y probablemente no nos sea útil
+bool Interaccion::rebote(Enemigo &esfera1, Enemigo &esfera2)//rebote entre enemigos
 {
 	//Hacemos un vector que una los centros y sacamos su módulo restándole los radios
 	Vector2D diferencia = esfera2.posicion - esfera1.posicion;
