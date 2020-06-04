@@ -1,4 +1,27 @@
-﻿  Disparo.cpp
+﻿  Bonus.cpp
+  Caja.cpp
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\caja.cpp(36): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\caja.cpp(37): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\caja.cpp(38): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\caja.cpp(39): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+  ColorRGB.cpp
+  CoordinadorJuego.cpp
+  Disparo.cpp
+  DisparoEspecial.cpp
+  Esfera.cpp
+  EsferaPulsante.cpp
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\esferapulsante.cpp(27): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\esferapulsante.cpp(28): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+c:\users\fabio rodríguez\documents\github\industrial-computing-project\trabajo_infor\trabajo_infor\src\esferapulsante.cpp(29): warning C4244: '=': conversión de 'float' a 'Byte'; posible pérdida de datos
+  Hombre.cpp
+  Interaccion.cpp
+  ListaDisparos.cpp
+  ListaEsferas.cpp
+  ListaPlataformas.cpp
   Mundo.cpp
+  ObjetoMovil.cpp
+  Videojuego.cpp
+  Pared.cpp
+  Vector2D.cpp
   Generando código...
-  Trabajo_Infor.vcxproj -> C:\Users\INES\Documents\GitHub\Industrial-Computing-Project\Trabajo_Infor\Trabajo_Infor\bin\Trabajo_Infor.exe
+  Trabajo_Infor.vcxproj -> C:\Users\Fabio Rodríguez\Documents\GitHub\Industrial-Computing-Project\Trabajo_Infor\Trabajo_Infor\bin\Trabajo_Infor.exe
