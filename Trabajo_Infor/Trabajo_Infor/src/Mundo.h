@@ -7,7 +7,6 @@
 #include "ListaDisparos.h"
 #include "ListaEnemigos.h"
 #include "ListaBonus.h"
-//#include "EsferaPulsante.h"
 
 class Mundo
 {
@@ -20,9 +19,7 @@ public:
 	void teclaEspecial(unsigned char key);
 	bool getCaida();
 	bool finNivel();
-	int marc() { return marcador; }
 	bool getImpacto();
-	//int getNumEsferas();
 	bool cargarNivel();
 private:
 	float x_ojo;
@@ -36,7 +33,6 @@ private:
 	bool caidaAlta;
 	bool impacto;
 	int nivel;
-	int marcador;
 	Hombre hombre;
 	ListaDisparos disparos;
 	ListaEnemigos enemigos;
