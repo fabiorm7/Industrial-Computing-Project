@@ -30,16 +30,3 @@ void Enemigo::setColor(unsigned char r, unsigned char v, unsigned char a)
 {
 	color.set(r, v, a);
 }
-
-/*Esfera* Esfera::dividir()
-{
-	if (radio < 1.0f)
-		return 0; //no dividimos
-	radio /= 2.0f;//Dividimos el radio por 2
-	//Creamos una esfera nueva, copiando la actual
-	Esfera *aux = new Esfera(*this);
-	//Les damos nuevas velocidades
-	aux->setVel(5, 8);//a la nueva mitad
-	setVel(-5, 8);//a la mitad original
-	return aux;
-}*/
