@@ -5,6 +5,7 @@
 
 ListaDisparos::ListaDisparos()
 {
+	max = 1;
 }
 
 ListaDisparos::~ListaDisparos()
@@ -18,7 +19,7 @@ bool ListaDisparos::agregar(Disparo * d)
 			return false;
 		}
 	}
-	if (numero<MAX_DISPAROS)
+	if (numero<MAX_DISPAROS && numero<max)
 		lista[numero++] = d;
 	else
 		return false;
