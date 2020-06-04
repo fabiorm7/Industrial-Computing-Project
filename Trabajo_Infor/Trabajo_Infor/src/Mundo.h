@@ -5,7 +5,7 @@
 #include "Interaccion.h"
 #include "ListaPlataformas.h"
 #include "ListaDisparos.h"
-#include "ListaEsferas.h"
+#include "ListaEnemigos.h"
 #include "ListaBonus.h"
 //#include "EsferaPulsante.h"
 
@@ -39,7 +39,7 @@ private:
 	int marcador;
 	Hombre hombre;
 	ListaDisparos disparos;
-	ListaEsferas esferas;
+	ListaEnemigos enemigos;
 	ListaBonus bonus;
 	ListaPlataformas plataformas;
 	Caja caja;
