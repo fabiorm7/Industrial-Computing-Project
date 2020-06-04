@@ -28,24 +28,4 @@ void Disparo::dibuja()
 	glTranslatef(posicion.x, posicion.y, 0);
 	glutSolidSphere(radio, 20, 20);
 	glPopMatrix();
-	//Estela del disparo (opcional)
-	glDisable(GL_LIGHTING);
-	glBegin(GL_LINES);
-	glVertex3f(origen.x, origen.y, 0);
-	glVertex3f(posicion.x, posicion.y, 0);
-	glEnd();
-	glEnable(GL_LIGHTING);
-}
-
-void Disparo::setPos(Vector2D pos)
-{
-	ObjetoMovil::setPos(pos);
-	origen = pos;
-}
-
-void Disparo::setPos(float x, float y)
-{
-	posicion.x = x;
-	posicion.y = y + 0.7f;
-	origen = posicion;
 }
