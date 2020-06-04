@@ -5,7 +5,6 @@
 
 ListaDisparos::ListaDisparos()
 {
-	max = 1;
 }
 
 ListaDisparos::~ListaDisparos()
