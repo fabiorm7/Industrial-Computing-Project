@@ -22,6 +22,7 @@ public:
 	void eliminar(int index);
 	void eliminar(Disparo *d);
 	void aumentarMax() { max++; }
+	void setMax(int max_disp) { max = max_disp; }
 private:
 	Disparo * lista[MAX_DISPAROS];
 	int numero;
