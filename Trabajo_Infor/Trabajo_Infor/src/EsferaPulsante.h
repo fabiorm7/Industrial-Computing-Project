@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include "Esfera.h"
+#include "Enemigo.h"
 
-class EsferaPulsante :public Esfera 
+class EsferaPulsante :public Enemigo 
 {
 private:
 	float pulso; //la velocidad de pulso
