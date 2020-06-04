@@ -14,6 +14,6 @@ public:
 	void dibuja();
 private:
 	Mundo mundo;
-	enum Estado{INICIO, JUEGO, GAMEOVER, FIN, PAUSA};
+	enum Estado{INICIO, JUEGO, GAMEOVER, FIN, PAUSA, INTRO};
 	Estado estado;
 };
