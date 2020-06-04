@@ -11,4 +11,5 @@ public:
 	Bonus();
 	virtual ~Bonus();
 	void dibuja();
+	friend class Interaccion;
 };
