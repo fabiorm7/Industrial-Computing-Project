@@ -15,7 +15,6 @@ public:
 	void destruirContenido();
 	void mueve(float t);
 	void dibuja();
-	void colision(Pared p);
 	void colision(Caja c);
 	int getNumero() { return numero; }
 	Disparo* operator [](int i);
