@@ -1,4 +1,4 @@
-//Aún no se usa
+//Se obtiene al destruir enemigos, aumenta el número máximo de disparos
 
 #include <stdlib.h>
 #include "Bonus.h"
