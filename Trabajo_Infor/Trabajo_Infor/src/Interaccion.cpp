@@ -68,6 +68,28 @@ void Interaccion::rebote(Esfera & e, Caja c)
 	rebote(e, c.pared_izq);
 }
 
+bool Interaccion::rebote(Bonus & b, Pared p)
+{
+	Vector2D dir;
+	float dif = p.distancia(b.posicion, &dir) - 2*b.radio;
+	if (b.getVel().y <= 0) {
+		if (dif < 0.0f) {
+			b.posicion.y = p.limite1.y + b.radio;
+			b.setVel_y(0.0f);
+			return true;
+		}
+	}
+	return false;
+}
+
+void Interaccion::rebote(Bonus & b, Caja c)
+{
+	rebote(b, c.suelo);
+	rebote(b, c.techo);
+	rebote(b, c.pared_dcha);
+	rebote(b, c.pared_izq);
+}
+
 bool Interaccion::rebote(Esfera &esfera1, Esfera &esfera2)//Es complicada y probablemente no nos sea útil
 {
 	//Hacemos un vector que una los centros y sacamos su módulo restándole los radios
@@ -145,6 +167,16 @@ bool Interaccion::colision(Esfera e, Hombre h)
 	return false;
 }
 
+bool Interaccion::colision(Bonus b, Hombre h)
+{
+	Vector2D pos = h.getPos(); //la posicion de la base del hombre
+	pos.y += h.getRadio() / 2.0f; //posicion del centro
+	float distancia = (b.posicion - pos).modulo();
+	if (distancia < b.radio)
+		return true;
+	return false;
+}
+
 bool Interaccion::colision(Disparo d, Pared p)//Se usa para que los disparos se eliminen al chocar con la pared
 {
 	Vector2D pos = d.getPos();
@@ -166,12 +198,10 @@ bool Interaccion::colision(Disparo d, Caja c)//Aplicación del anterior a la caja
 
 bool Interaccion::colision(Disparo d, Esfera e)
 {
-	Pared aux; //Creamos una pared auxiliar
-	Vector2D p1 = d.posicion;
-	Vector2D p2 = d.origen;
-	aux.setPos(p1.x, p1.y, p2.x, p2.y); //Que coincida con el disparo.
-	float dist = aux.distancia(e.posicion, NULL); //para calcular su distancia
-	if (dist < e.radio)
+	Vector2D pos = d.getPos(); //la posicion de la base del hombre
+	pos.y += d.getRadio() / 2.0f; //posicion del centro
+	float distancia = (e.posicion - pos).modulo();
+	if (distancia < e.radio)
 		return true;
 	return false;
 }
