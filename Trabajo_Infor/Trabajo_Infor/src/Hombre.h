@@ -13,8 +13,6 @@ public:
 	Hombre();
 	virtual ~Hombre();
 	void dibuja();
-	/*void setVel_y(float vy) { velocidad.y = vy; }
-	void setVel_x(float vx) { velocidad.x = vx; }*/
 	friend class Interaccion;
 private:
 	SpriteSequence sprite;
