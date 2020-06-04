@@ -3,6 +3,7 @@
 #include "CoordinadorJuego.h"
 #include "ETSIDI.h"
 #include "glut.h"
+#include <string>
 
 CoordinadorJuego::CoordinadorJuego()
 {
@@ -86,13 +87,16 @@ void CoordinadorJuego::dibuja()
 		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -5, 6);
 		ETSIDI::printxy("USE LAS FLECHAS PARA MOVERSE", -5, 4);
 		ETSIDI::printxy("PULSE ESPACIO PARA DISPARO", -5, 3);
-		ETSIDI::printxy("PULSE Z PARA DISPARO ESPECIAL", -5, 2);
 		ETSIDI::printxy("PULSE P PARA PAUSA", -5, 1);
 		//Controles del pang como ejemplo, se pueden cambiar
 		ETSIDI::printxy("[Insertar nombre de participantes o grupo]", 2, -1);
 	}
 	else if (estado == JUEGO) {
 		mundo.Dibuja();
+		/*ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 10);
+		char marcador[] = { char(mundo.marc()) };
+		ETSIDI::printxy(marcador, -1, 16);*/
 	}
 	else if (estado == GAMEOVER)
 	{
