@@ -6,11 +6,8 @@
 #include "ListaPlataformas.h"
 #include "ListaDisparos.h"
 #include "ListaEsferas.h"
-/*#include "Esfera.h"
-#include "Bonus.h"
-#include "Disparo.h"
-#include "EsferaPulsante.h"
-#include "DisparoEspecial.h"*/
+#include "ListaBonus.h"
+//#include "EsferaPulsante.h"
 
 class Mundo
 {
@@ -18,12 +15,12 @@ public:
 	virtual ~Mundo();
 	void Tecla(unsigned char key);
 	void Inicializa();
-	void RotarOjo();
 	void Mueve();
 	void Dibuja();
 	void teclaEspecial(unsigned char key);
 	bool getCaida();
 	bool finNivel();
+	int marc() { return marcador; }
 	bool getImpacto();
 	//int getNumEsferas();
 	bool cargarNivel();
@@ -39,11 +36,11 @@ private:
 	bool caidaAlta;
 	bool impacto;
 	int nivel;
+	int marcador;
 	Hombre hombre;
 	ListaDisparos disparos;
 	ListaEsferas esferas;
-	/*Bonus bonus;
-	DisparoEspecial disparo_especial;*/
+	ListaBonus bonus;
 	ListaPlataformas plataformas;
 	Caja caja;
 };
