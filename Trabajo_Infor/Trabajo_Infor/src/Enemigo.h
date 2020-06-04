@@ -16,5 +16,4 @@ public:
 	void dibuja();
 	void setColor(unsigned char r, unsigned char v, unsigned char a);
 	friend class Interaccion;
-	//virtual Esfera* dividir();
 };
