@@ -4,7 +4,7 @@
 
 #include "Hombre.h"
 #include "Caja.h"
-#include "Esfera.h"
+#include "Enemigo.h"
 #include "Disparo.h"
 #include "Bonus.h"
 
@@ -15,14 +15,14 @@ public:
 	static bool finNivel(Hombre& h, Pared p);
 	Interaccion();
 	virtual ~Interaccion();
-	static bool rebote(Esfera &e, Pared p);
-	static void rebote(Esfera &e, Caja c);
+	static bool rebote(Enemigo &e, Pared p);
+	static void rebote(Enemigo &e, Caja c);
 	static bool rebote(Bonus &b, Pared p);
 	static void rebote(Bonus &b, Caja c);
-	static bool rebote(Esfera& e1, Esfera& e2);
-	static bool colision(Esfera e, Hombre h);
+	static bool rebote(Enemigo& e1, Enemigo& e2);
+	static bool colision(Enemigo e, Hombre h);
 	static bool colision(Bonus b, Hombre h);
 	static bool colision(Disparo d, Pared p);
 	static bool colision(Disparo d, Caja c);
-	static bool colision(Disparo d, Esfera e);
+	static bool colision(Disparo d, Enemigo e);
 };
