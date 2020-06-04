@@ -18,7 +18,7 @@ EsferaPulsante::~EsferaPulsante()
 
 void EsferaPulsante::mueve(float t)
 {
-	Esfera::mueve(t);
+	Enemigo::mueve(t);
 	if (radio>radio_max)
 		pulso = -pulso;
 	if (radio<radio_min)
