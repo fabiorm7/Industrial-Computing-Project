@@ -44,15 +44,6 @@ void ListaDisparos::dibuja()
 		lista[i]->dibuja();
 }
 
-void ListaDisparos::colision(Pared p)//No se usa, es prescindible a no ser que queramos que el disparo se pare al tocar con una plataforma
-{
-	for (int i = 0;i<numero;i++)
-	{
-		if (Interaccion::colision(*(lista[i]), p))
-			lista[i]->setVel(0,0);
-	}
-}
-
 void ListaDisparos::colision(Caja c)
 {
 	for (int i = 0;i<numero;i++)
