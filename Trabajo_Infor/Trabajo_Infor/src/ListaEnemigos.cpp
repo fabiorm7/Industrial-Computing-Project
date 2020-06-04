@@ -40,6 +40,15 @@ void ListaEnemigos::mueve(float t)
 		lista[i]->mueve(t);
 }
 
+void ListaEnemigos::crear(float t)//Para crear enemigos infinitamente
+{
+	if (t > numero) {
+		Enemigo* aux = new Enemigo(1.5, -5 + t, 12, t, 5);
+		aux->setColor(t * 40, 0, 255 - t * 40);
+		agregar(aux);
+	}
+}
+
 void ListaEnemigos::rebote(Caja caja)
 {
 	for (int i = 0;i<numero;i++)
