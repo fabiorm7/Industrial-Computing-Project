@@ -16,7 +16,7 @@ void Mundo::Dibuja()
 	plataformas.dibuja();
 	hombre.dibuja();
 	disparos.dibuja();
-	esferas.dibuja();
+	enemigos.dibuja();
 	bonus.dibuja();
 }
 
@@ -34,11 +34,11 @@ void Mundo::Mueve()
 	disparos.colision(caja);
 	//disparos.colision(plataforma);
 	bonus.rebote(caja);
-	esferas.rebote(caja);
-	esferas.rebote();
+	enemigos.rebote(caja);
+	enemigos.rebote();
 	for (int i = 0; i < plataformas.getNumero(); i++) {//Para mantenerse sobre las plataformas
 		Interaccion::rebote(hombre, *plataformas[i]);
-		esferas.rebote(*plataformas[i]);
+		enemigos.rebote(*plataformas[i]);
 		bonus.rebote(*plataformas[i]);
 	}
 	finNiv = Interaccion::finNivel(hombre, *plataformas[6]);//Fin cuando atraviesa la puerta. 
@@ -58,24 +58,24 @@ void Mundo::Mueve()
 		caidaAlta = true;
 	}
 	disparos.mueve(0.025f);
-	esferas.mueve(0.025f);
+	enemigos.mueve(0.025f);
 	bonus.mueve(0.025f);
-	for (int i = 0; i < esferas.getNumero(); i++)
+	for (int i = 0; i < enemigos.getNumero(); i++)
 	{
 		for (int j = 0; j < disparos.getNumero(); j++) {
-			if (Interaccion::colision(*disparos[j], *esferas[i]))
+			if (Interaccion::colision(*disparos[j], *enemigos[i]))
 			{
 				Bonus *b = new Bonus();
-				b->setPos(esferas[i]->getPos());
+				b->setPos(enemigos[i]->getPos());
 				bonus.agregar(b);
-				esferas.eliminar(esferas[i]);
+				enemigos.eliminar(enemigos[i]);
 				disparos.eliminar(disparos[j]);
 				ETSIDI::play("sonidos/impacto.wav");
 				break;
 			}
 		}
 	}
-	Esfera *aux = esferas.colision(hombre);
+	Enemigo *aux = enemigos.colision(hombre);
 	if (aux != 0)
 		impacto = true;
 	Bonus *baux = bonus.colision(hombre);
@@ -87,6 +87,7 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()
 {
+	disparos.setMax(1);
 	nivel = 0;
 	marcador = 0;
 	cargarNivel();
@@ -95,8 +96,9 @@ void Mundo::Inicializa()
 Mundo::~Mundo()
 {
 	plataformas.destruirContenido();
-	esferas.destruirContenido();
+	enemigos.destruirContenido();
 	disparos.destruirContenido();
+	bonus.destruirContenido();
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -174,8 +176,9 @@ bool Mundo::cargarNivel()
 	//bonus.setPos(5.0f, 5.0f);
 	hombre.setVel(0.0f, 0.0f);
 	plataformas.destruirContenido();
-	esferas.destruirContenido();
+	enemigos.destruirContenido();
 	disparos.destruirContenido();
+	bonus.destruirContenido();
 	impacto = false;
 	finNiv = false;
 	caidaAlta = false;
@@ -225,10 +228,10 @@ bool Mundo::cargarNivel()
 		puerta->setColor(0, 0, 250);
 		puerta->setPos(-5.0f, 6.0f, -5.0f, 12.0f);
 		plataformas.agregar(puerta);
-		Esfera *e1 = new Esfera(1.5f, 5.0f, 1.5f, -5.0f, 0.0f);
-		esferas.agregar(e1);
-		Esfera *e2 = new Esfera(1.5f, 10.0f, 7.0f, -3.0f, 0.0f);
-		esferas.agregar(e2);
+		Enemigo *e1 = new Enemigo(1.5f, 5.0f, 1.5f, -5.0f, 0.0f);
+		enemigos.agregar(e1);
+		Enemigo *e2 = new Enemigo(1.5f, 10.0f, 7.0f, -3.0f, 0.0f);
+		enemigos.agregar(e2);
 	}
 	if (nivel == 3)
 	{
