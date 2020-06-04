@@ -46,7 +46,7 @@ Interaccion::~Interaccion()
 {
 }
 
-bool Interaccion::rebote(Esfera &e, Pared p)//las de esferas aún no se usan, pero son reciclables
+bool Interaccion::rebote(Enemigo &e, Pared p)//las de esferas aún no se usan, pero son reciclables
 {
 	Vector2D dir;
 	float dif = p.distancia(e.posicion, &dir) - e.radio;
@@ -60,7 +60,7 @@ bool Interaccion::rebote(Esfera &e, Pared p)//las de esferas aún no se usan, per
 	return false;
 }
 
-void Interaccion::rebote(Esfera & e, Caja c)
+void Interaccion::rebote(Enemigo & e, Caja c)
 {
 	rebote(e, c.suelo);
 	rebote(e, c.techo);
@@ -90,7 +90,7 @@ void Interaccion::rebote(Bonus & b, Caja c)
 	rebote(b, c.pared_izq);
 }
 
-bool Interaccion::rebote(Esfera &esfera1, Esfera &esfera2)//Es complicada y probablemente no nos sea útil
+bool Interaccion::rebote(Enemigo &esfera1, Enemigo &esfera2)//Es complicada y probablemente no nos sea útil
 {
 	//Hacemos un vector que una los centros y sacamos su módulo restándole los radios
 	Vector2D diferencia = esfera2.posicion - esfera1.posicion;
@@ -157,7 +157,7 @@ bool Interaccion::rebote(Esfera &esfera1, Esfera &esfera2)//Es complicada y prob
 	return false;
 }
 
-bool Interaccion::colision(Esfera e, Hombre h)
+bool Interaccion::colision(Enemigo e, Hombre h)
 {
 	Vector2D pos = h.getPos(); //la posicion de la base del hombre
 	pos.y += h.getRadio() / 2.0f; //posicion del centro
@@ -196,7 +196,7 @@ bool Interaccion::colision(Disparo d, Caja c)//Aplicación del anterior a la caja
 	else return false;
 }
 
-bool Interaccion::colision(Disparo d, Esfera e)
+bool Interaccion::colision(Disparo d, Enemigo e)
 {
 	Vector2D pos = d.getPos(); //la posicion de la base del hombre
 	pos.y += d.getRadio() / 2.0f; //posicion del centro
